@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "AfficherSuggestions";
+    Layout = "~/Views/Shared/LayoutSociete.cshtml";
+}
+
+
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                Departure
+            </th>
+
+            <th scope="col">
+                Arrivale
+            </th>
+
+            <th scope="col">
+                Departure Time
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var s in ViewBag.Suggestions)
+            {
+
+        <tr>
+            <td>
+                @(s.Ville_Depart.ToUpper())
+            </td>
+
+            <td>
+                @(s.Ville_Arrive.ToUpper())
+            </td>
+
+            <td>
+                @s.Heure_depart
+            </td>
+
+
+            <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Add</button>
+            </td>
+        </tr>
+            }
+
+
+    </tbody>
+
+</table>
+

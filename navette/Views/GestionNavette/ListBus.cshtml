@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "ListBus";
+    Layout = "~/Views/Shared/LayoutSociete.cshtml";
+}
+
+
+
+<br />
+<br />
+<br />
+<br />
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                ID
+            </th>
+
+            <th scope="col">
+                Capacity
+            </th>
+
+            <th scope="col">
+                Description
+            </th>
+
+            <th scope="col">
+                Registration
+            </th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var a in ViewBag.Autocars)
+        {
+            <tr>
+                <td>
+                    @a.ID_Autocar
+                </td>
+
+                <td>
+                    @a.Capacity
+                </td>
+
+                <td>
+                    @a.Descritpion_Autocar
+                </td>
+
+                <td>
+                    @a.Matricule
+                </td>
+
+
+
+            </tr>
+
+        }
+
+
+    </tbody>
+
+</table>

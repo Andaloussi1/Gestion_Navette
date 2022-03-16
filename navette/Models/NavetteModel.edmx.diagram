@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a126329d663148f4914877b968617e78" Name="Diagram1" ZoomLevel="64" ShowGrid="false">
+        <EntityTypeShape EntityType="NavetteMANAGER_DBModel.Abonnement" Width="1.5" PointX="3.375" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteMANAGER_DBModel.Autocar" Width="1.5" PointX="1.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteMANAGER_DBModel.Demande" Width="1.5" PointX="6.875" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteMANAGER_DBModel.Societe" Width="1.5" PointX="3.875" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteMANAGER_DBModel.USER_APP" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NavetteMANAGER_DBModel.Ville" Width="1.5" PointX="0.625" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.FK__Abonnemen__ID_Au__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.FK__Abonnemen__ID_So__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.FK__Abonnemen__Ville__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.FK__Abonnemen__Ville__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.FK__Demande__Ville_A__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.FK__Demande__Ville_D__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.Abonnement_Client" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="NavetteMANAGER_DBModel.suggestion" Width="1.5" PointX="4.75" PointY="0.875" />
+        <EntityTypeShape EntityType="NavetteMANAGER_DBModel.Abo_Client" Width="1.5" PointX="7.375" PointY="3.625" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.FK__Abo_Clien__Id_Ab__6FE99F9F" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.FK__Abo_Clien__Id_Cl__70DDC3D8" />
+        <AssociationConnector Association="NavetteMANAGER_DBModel.FK__Autocar__ID_Soci__01142BA1" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

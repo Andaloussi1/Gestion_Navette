@@ -1,0 +1,135 @@
+﻿
+@model navette.Models.Demande
+@{
+    ViewBag.Title = "Acceuil";
+    Layout = "~/Views/Shared/LayoutForm.cshtml";
+}
+<section class="mt-7 py-0">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 py-5 py-xl-5 py-xxl-7">
+                <br /><br /><br /><br /><br />
+    
+                @if (TempData["Out of subscribtions"] != null)
+
+                {
+                    <button id="sub" style="display:none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Subscribe</button>
+                    <script type="text/javascript">
+                    $(document).ready(function () {
+                            $(function () {
+                                $('#sub').click();
+                            });
+                        });</script>
+
+                    using (Html.BeginForm("Suggest", "GestionNavette", FormMethod.Post, new { @class = "row g-4 mt-5" }))
+                    {
+
+                        <!-- Modal -->
+                        <div class="modal fade " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">We Are Sorry !</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        @TempData["Out of subscribtions"]
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button id="cancel" type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                        <a class="btn btn-secondary" href="Suggest">Suggest</a>
+                                        @*<button type="submit" class="btn btn-primary">Suggest subscribtion</button>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                }
+                @if (TempData["Validation"] != null)
+                {
+                    <div class="container">
+
+                        <div class="alert alert-success alert-dismissible" id="myAlert">
+                            <a href="#" class="close">&times;</a>
+                            <strong>Success!</strong> @TempData["Validation"]
+
+                        </div>
+                    </div>
+
+                    <script>
+                        $(document).ready(function () {
+                            $(".close").click(function () {
+                                $("#myAlert").alert("close");
+                            });
+                        });
+                    </script>
+
+                }
+                <h1 class="display-3 text-primary fw-bold">Please Enter information about your subscription</h1>
+                <div class="tab-content" id="nav-tabContent">
+                    <a href="AbonnmentClient" class="btn btn-outline-primary">My subscribtions</a>
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+
+                        @using (Html.BeginForm("Form", "GestionNavette", FormMethod.Post, new { @class = "row g-4 mt-5" }))
+                        {
+                            <div class="col-sm-6 col-md-6 col-xl-5">
+                                <div class="input-group-icon">
+                                    @Html.ValidationMessageFor(D => D.Ville_Depart, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(D => D.Ville_Depart, (IEnumerable<SelectListItem>)ViewBag.villes, "From Where", new { @class = "form-select form-voyage-select input-box" })
+                                    <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-bus"> </i></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-xl-5">
+                                <div class="input-group-icon">
+
+
+                                    @Html.ValidationMessageFor(D => D.Ville_Arrive, "", new { @class = "text-danger" })
+                                    @Html.DropDownListFor(D => D.Ville_Arrive, (IEnumerable<SelectListItem>)ViewBag.villes, "To Where", new { @class = "form-select form-voyage-select input-box" })
+                                    <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-bus"> </i></span>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 col-md-6 col-xl-5">
+                                <div class="input-group-icon">
+                                    @Html.ValidationMessageFor(D => D.Date_Debut, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(D => D.Date_Debut, new { placeholder = "Starts on", @class = "form-control input-box form-voyage-control", onfocus = "(this.type='date')" })
+
+                                    <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+
+                                <button class="btn btn-secondary" type="submit">Search</button>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 py-5 py-xl-5 py-xxl-7">
+                <br /><br /><br /><br /><br />
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+
+
+                        <img class="img-fluid" src="~/Content/images/orange-school-bus-hi.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

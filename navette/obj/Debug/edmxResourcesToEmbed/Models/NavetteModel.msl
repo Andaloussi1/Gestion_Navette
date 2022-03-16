@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NavetteMANAGER_DBModelStoreContainer" CdmEntityContainer="NavetteMANAGER_DBEntities">
+    <EntitySetMapping Name="Abonnement">
+      <EntityTypeMapping TypeName="NavetteMANAGER_DBModel.Abonnement">
+        <MappingFragment StoreEntitySet="Abonnement">
+          <ScalarProperty Name="inscrits" ColumnName="inscrits" />
+          <ScalarProperty Name="nombre_inscrit" ColumnName="nombre_inscrit" />
+          <ScalarProperty Name="ID_Abonnement" ColumnName="ID_Abonnement" />
+          <ScalarProperty Name="ID_Societe" ColumnName="ID_Societe" />
+          <ScalarProperty Name="ID_Autocar" ColumnName="ID_Autocar" />
+          <ScalarProperty Name="Date_Debut" ColumnName="Date_Debut" />
+          <ScalarProperty Name="Date_Fin" ColumnName="Date_Fin" />
+          <ScalarProperty Name="Heure_Depart" ColumnName="Heure_Depart" />
+          <ScalarProperty Name="Heure_Arrive" ColumnName="Heure_Arrive" />
+          <ScalarProperty Name="Nombre_Passager" ColumnName="Nombre_Passager" />
+          <ScalarProperty Name="Ville_Depart" ColumnName="Ville_Depart" />
+          <ScalarProperty Name="Ville_Arrive" ColumnName="Ville_Arrive" />
+          <ScalarProperty Name="Prix" ColumnName="Prix" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Autocar">
+      <EntityTypeMapping TypeName="NavetteMANAGER_DBModel.Autocar">
+        <MappingFragment StoreEntitySet="Autocar">
+          <ScalarProperty Name="ID_Societe" ColumnName="ID_Societe" />
+          <ScalarProperty Name="Matricule" ColumnName="Matricule" />
+          <ScalarProperty Name="ID_Autocar" ColumnName="ID_Autocar" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Descritpion_Autocar" ColumnName="Descritpion_Autocar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Demande">
+      <EntityTypeMapping TypeName="NavetteMANAGER_DBModel.Demande">
+        <MappingFragment StoreEntitySet="Demande">
+          <ScalarProperty Name="ID_Demande" ColumnName="ID_Demande" />
+          <ScalarProperty Name="Date_Debut" ColumnName="Date_Debut" />
+          <ScalarProperty Name="Date_Fin" ColumnName="Date_Fin" />
+          <ScalarProperty Name="Heure_Depart" ColumnName="Heure_Depart" />
+          <ScalarProperty Name="Heure_Arrive" ColumnName="Heure_Arrive" />
+          <ScalarProperty Name="Nombre_Passager" ColumnName="Nombre_Passager" />
+          <ScalarProperty Name="Ville_Depart" ColumnName="Ville_Depart" />
+          <ScalarProperty Name="Ville_Arrive" ColumnName="Ville_Arrive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Societe">
+      <EntityTypeMapping TypeName="NavetteMANAGER_DBModel.Societe">
+        <MappingFragment StoreEntitySet="Societe">
+          <ScalarProperty Name="ID_Societe" ColumnName="ID_Societe" />
+          <ScalarProperty Name="Nom_Societe" ColumnName="Nom_Societe" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_APP">
+      <EntityTypeMapping TypeName="NavetteMANAGER_DBModel.USER_APP">
+        <MappingFragment StoreEntitySet="USER_APP">
+          <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ville">
+      <EntityTypeMapping TypeName="NavetteMANAGER_DBModel.Ville">
+        <MappingFragment StoreEntitySet="Ville">
+          <ScalarProperty Name="ID_Ville" ColumnName="ID_Ville" />
+          <ScalarProperty Name="Nom_Ville" ColumnName="Nom_Ville" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Abonnement_Client" TypeName="NavetteMANAGER_DBModel.Abonnement_Client" StoreEntitySet="Abonnement_Client">
+      <EndProperty Name="Abonnement">
+        <ScalarProperty Name="ID_Abonnement" ColumnName="ID_Abonnement" />
+      </EndProperty>
+      <EndProperty Name="USER_APP">
+        <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="suggestion">
+      <EntityTypeMapping TypeName="NavetteMANAGER_DBModel.suggestion">
+        <MappingFragment StoreEntitySet="suggestion">
+          <ScalarProperty Name="Heure_depart" ColumnName="Heure_depart" />
+          <ScalarProperty Name="Ville_Arrive" ColumnName="Ville_Arrive" />
+          <ScalarProperty Name="Ville_Depart" ColumnName="Ville_Depart" />
+          <ScalarProperty Name="Id_Suggestion" ColumnName="Id_Suggestion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Abo_Client">
+      <EntityTypeMapping TypeName="NavetteMANAGER_DBModel.Abo_Client">
+        <MappingFragment StoreEntitySet="Abo_Client">
+          <ScalarProperty Name="Id_Client" ColumnName="Id_Client" />
+          <ScalarProperty Name="Id_Abo" ColumnName="Id_Abo" />
+          <ScalarProperty Name="Id_Abo_Clienta" ColumnName="Id_Abo_Clienta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

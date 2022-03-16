@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "ListAbonnes";
+    Layout = "~/Views/Shared/LayoutSociete.cshtml";
+}
+
+<h2>ListAbonnes</h2>
+
+                @foreach(var i in ViewBag.Client)
+            {
+                     foreach (var a in ViewBag.temp)
+                {
+                    if (a.Id_Client == i.ID_USER)
+                    {
+                        <h1>
+                            @i.Nom
+                        </h1>
+                    }
+                }
+
+
+
+
+
+
+
+                    }
+

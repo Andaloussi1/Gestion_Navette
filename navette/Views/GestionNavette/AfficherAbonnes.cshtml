@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "AfficherAbonnes";
+    Layout = "~/Views/Shared/LayoutSociete.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                User ID
+            </th>
+
+            <th scope="col">
+                First Name
+            </th>
+
+            <th scope="col">
+                Last Name
+            </th>
+
+            <th scope="col">
+                Email
+            </th>
+
+            <th scope="col">
+                ID Abonnement
+            </th>
+
+
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @(ViewBag.abonnement.Ville.Nom_Ville.ToUpper())
+            </td>
+
+            <td>
+                @(ViewBag.abonnement.Ville1.Nom_Ville.ToUpper())
+            </td>
+
+            <td>
+                @ViewBag.abonnement.Date_Debut.ToString("dd-M-yyyy")
+            </td>
+
+            <td>
+                @ViewBag.abonnement.Date_Fin.ToString("dd-M-yyyy")
+            </td>
+            <td>
+                @ViewBag.abonnement.Societe.Nom_Societe
+            </td>
+            <td>
+                @(ViewBag.abonnement.Autocar.Descritpion_Autocar.ToUpper())
+            </td>
+
+            <td>
+                @(ViewBag.abonnement.Prix)
+            </td>
+
+            <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Subscribe</button>
+            </td>
+        </tr>
+
+
+    </tbody>
+
+</table>

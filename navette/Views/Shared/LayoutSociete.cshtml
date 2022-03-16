@@ -1,0 +1,207 @@
+﻿@model navette.Models.USER_APP
+@using navette.Models
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <!-- ===============================================-->
+    <!-- Document Title-->
+    <!-- ===============================================-->
+    <title>Ma Navette , Officiel Site Of Ma Navette&amp; BELRHITI</title>
+
+
+
+
+    <!-- ===============================================-->
+    <!-- Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Content/LastTemp/assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Content/LastTemp/assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/LastTemp/assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/LastTemp/assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="~/Content/LastTemp/assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="~/Content/LastTemp/assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+
+
+    <!-- ===============================================-->
+    <!-- Stylesheets-->
+    <!-- ===============================================-->
+    <link href="~/Content/LastTemp/assets/css/theme.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+    <!-- ===============================================-->
+    <!-- Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 d-block" data-navbar-on-scroll="data-navbar-on-scroll">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><img class="d-inline-block" src="~/Content/LastTemp/assets/img/gallery/logo.png" width="50" alt="logo" /><span class="fw-bold text-primary ms-2">Navett'ON</span></a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto pt-2 pt-lg-0 font-base">
+                        <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="#destinations"><span class="nav-link-text">Home </span></a></li>
+                        <li class="nav-item px-2"><a class="nav-link" href="#flights"> <span class="nav-link-text">About us</span></a></li>
+                        <li class="nav-item px-2"><a class="nav-link" href="#hotels"> <span class="nav-link-text">Contact us</span></a></li>
+                    </ul>
+                    <button class="btn text-800 order-1 order-lg-0 me-2" type="button">
+                        @if (Session["User"] != null)
+                        {<text>
+                                @(((Societe)Session["User"]).UserName) </text>
+                    }
+                    </button>
+                    @using (Html.BeginForm("Logout", "GestionNavette", FormMethod.Post))
+                    {
+                        <button class="btn btn-voyage-outline order-0" type="submit"><span class="text-primary">logout</span></button>
+                    }
+
+
+
+                </div>
+            </div>
+        </nav>
+
+        <div id="BackGround" style="background-image: url('~/Content/LastTemp/assets/img/meetings-bg.jpg'); ">
+
+
+
+            <section class="mt-7 py-0">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 py-5 py-xl-5 py-xxl-7">
+
+                            @if (TempData["Abonnement ajoutée"] != null)
+        {
+            <div class="container">
+
+                <div class="alert alert-success alert-dismissible" id="myAlert">
+                    <a href="#" class="close">&times;</a>
+                    <strong>Success!</strong> @TempData["Abonnement ajoutée"]
+
+                </div>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    $(".close").click(function () {
+                        $("#myAlert").alert("close");
+                    });
+                });
+            </script>
+
+        }
+                            <h1 class="display-3 text-primary fw-bold">Please enter information about your subscribtion</h1>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <br />
+                                    <a href="AfficherSuggestions" class="btn btn-outline-primary">Suggestions</a>
+                                    <a href="ListBus" class="btn btn-outline-secondary">Autocars</a>
+                                    <a href="AjouterAbonnement2" class="btn btn-outline-primary">New subscribtion</a>
+
+
+                                    @RenderBody()
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 py-5 py-xl-5 py-xxl-7">
+                            <br /><br /><br /><br /><br />
+
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+
+
+                                    <img class="img-fluid" src="~/Content/images/orange-school-bus-hi.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-sm-4 col-lg-6">
+                        <div class="py-7">
+                            <img class="d-inline-block" src="~/Content/LastTemp/assets/img/gallery/logo.png" width="50" alt="logo" /><span class="fw-bold fs-4 text-primary ms-2">voyage</span>
+                            <ul class="list-unstyled mt-4">
+                                <li class="mb-2"><a class="text-800 fw-bold text-decoration-none" href="#!">News</a></li>
+                                <li class="mb-2"><a class="text-800 fw-bold text-decoration-none" href="#!">Terms &amp; Conditions</a></li>
+                                <li class="mb-2"><a class="text-800 fw-bold text-decoration-none" href="#!">Privacy</a></li>
+                                <li class="mb-2"><a class="text-800 fw-bold text-decoration-none" href="#!">About Us</a></li>
+                                <li class="mb-2"><a class="text-800 fw-bold text-decoration-none" href="#!">FAQs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-6 col-8 col-lg-6 bg-primary-gradient bg-offcanvas-right">
+                        <div class="p-3 py-7 p-md-7">
+                            <p class="text-light"><i class="fas fa-phone-alt me-3"></i><span class="text-light">+212 658 16 16 00 - +212 699 027 781</span></p>
+                            <p class="text-light"><i class="fas fa-envelope me-3"></i><span class="text-light">Navetton@gmail.com</span></p>
+                            <p class="text-light"><i class="fas fa-map-marker-alt me-3"></i><span class="text-light lh-lg"> Hay Riyad Villa 007 (En face palais royale) , RABAT <br /> Rabat , MOROCCO</span></p>
+                            <div class="mt-6"><a href="#!"> <img class="me-3" src="~/Content/LastTemp/assets/img/icons/facebook.svg" alt="..." /></a><a href="#!"> <img class="me-3" src="~/Content/LastTemp/assets/img/icons/twitter.svg" alt="..." /></a><a href="#!"> <img class="me-3" src="~/Content/LastTemp/assets/img/icons/instagram.svg" alt="..." /></a></div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of .container-->
+            </section>
+
+        </div>
+
+
+
+        <!--/.bg-holder-->
+        <!-- ============================================-->
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+    </main>
+    <!-- ===============================================-->
+    <!-- End of Main Content-->
+    <!-- ===============================================-->
+    <!-- ===============================================-->
+    <!-- JavaScripts-->
+    <!-- ===============================================-->
+    <script src="~/Content/LastTemp/vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="~/Content/LastTemp/vendors/popperjs/popper.min.js"></script>
+    <script src="~/Content/LastTemp/vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="~/Content/LastTemp/vendors/fontawesome/all.min.js"></script>
+    <script src="~/Content/LastTemp/assets/js/theme.js"></script>
+
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+</body>
+</html>

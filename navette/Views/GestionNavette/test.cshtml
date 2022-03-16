@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+}
+
+<h2>Test</h2>
+
+<table>
+
+    <thead>
+    @foreach(var ab in ViewBag.Abonnement)
+            
+    
+    { <tr>
+        
+        <td>
+            @ab.Ville_Depart
+        </td>
+        
+        </tr>
+
+            }
+
+    </thead>
+</table>
+    
+
+

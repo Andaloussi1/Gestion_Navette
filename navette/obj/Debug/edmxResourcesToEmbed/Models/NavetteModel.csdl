@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NavetteMANAGER_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Abonnement">
+    <Key>
+      <PropertyRef Name="ID_Abonnement" />
+    </Key>
+    <Property Name="ID_Abonnement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Societe" Type="Int32" />
+    <Property Name="ID_Autocar" Type="Int32" />
+    <Property Name="Date_Debut" Type="DateTime" Precision="0" />
+    <Property Name="Date_Fin" Type="DateTime" Precision="0" />
+    <Property Name="Heure_Depart" Type="Time" Precision="7" />
+    <Property Name="Heure_Arrive" Type="Time" Precision="7" />
+    <Property Name="Nombre_Passager" Type="Int32" />
+    <Property Name="Ville_Depart" Type="Int32" />
+    <Property Name="Ville_Arrive" Type="Int32" />
+    <Property Name="Prix" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Autocar" Relationship="Self.FK__Abonnemen__ID_Au__45F365D3" FromRole="Abonnement" ToRole="Autocar" />
+    <NavigationProperty Name="Societe" Relationship="Self.FK__Abonnemen__ID_So__44FF419A" FromRole="Abonnement" ToRole="Societe" />
+    <NavigationProperty Name="Ville" Relationship="Self.FK__Abonnemen__Ville__46E78A0C" FromRole="Abonnement" ToRole="Ville" />
+    <NavigationProperty Name="Ville1" Relationship="Self.FK__Abonnemen__Ville__47DBAE45" FromRole="Abonnement" ToRole="Ville" />
+    <NavigationProperty Name="USER_APP" Relationship="Self.Abonnement_Client" FromRole="Abonnement" ToRole="USER_APP" />
+    <NavigationProperty Name="Abo_Client" Relationship="NavetteMANAGER_DBModel.FK__Abo_Clien__Id_Ab__6FE99F9F" FromRole="Abonnement" ToRole="Abo_Client" />
+    <Property Name="nombre_inscrit" Type="Int32" />
+    <Property Name="inscrits" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Autocar">
+    <Key>
+      <PropertyRef Name="ID_Autocar" />
+    </Key>
+    <Property Name="ID_Autocar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Capacity" Type="Int32" />
+    <Property Name="Descritpion_Autocar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Abonnement" Relationship="Self.FK__Abonnemen__ID_Au__45F365D3" FromRole="Autocar" ToRole="Abonnement" />
+    <Property Name="Matricule" Type="Int32" />
+    <Property Name="ID_Societe" Type="Int32" />
+    <NavigationProperty Name="Societe" Relationship="NavetteMANAGER_DBModel.FK__Autocar__ID_Soci__01142BA1" FromRole="Autocar" ToRole="Societe" />
+  </EntityType>
+  <EntityType Name="Demande">
+    <Key>
+      <PropertyRef Name="ID_Demande" />
+    </Key>
+    <Property Name="ID_Demande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date_Debut" Type="DateTime" Precision="0" />
+    <Property Name="Date_Fin" Type="DateTime" Precision="0" />
+    <Property Name="Heure_Depart" Type="Time" Precision="7" />
+    <Property Name="Heure_Arrive" Type="Time" Precision="7" />
+    <Property Name="Nombre_Passager" Type="Int32" />
+    <Property Name="Ville_Depart" Type="Int32" />
+    <Property Name="Ville_Arrive" Type="Int32" />
+    <NavigationProperty Name="Ville" Relationship="Self.FK__Demande__Ville_A__3D5E1FD2" FromRole="Demande" ToRole="Ville" />
+    <NavigationProperty Name="Ville1" Relationship="Self.FK__Demande__Ville_D__3C69FB99" FromRole="Demande" ToRole="Ville" />
+  </EntityType>
+  <EntityType Name="Societe">
+    <Key>
+      <PropertyRef Name="ID_Societe" />
+    </Key>
+    <Property Name="ID_Societe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom_Societe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Abonnement" Relationship="Self.FK__Abonnemen__ID_So__44FF419A" FromRole="Societe" ToRole="Abonnement" />
+    <NavigationProperty Name="Autocar" Relationship="NavetteMANAGER_DBModel.FK__Autocar__ID_Soci__01142BA1" FromRole="Societe" ToRole="Autocar" />
+  </EntityType>
+  <EntityType Name="USER_APP">
+    <Key>
+      <PropertyRef Name="ID_USER" />
+    </Key>
+    <Property Name="ID_USER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Abonnement" Relationship="Self.Abonnement_Client" FromRole="USER_APP" ToRole="Abonnement" />
+    <NavigationProperty Name="Abo_Client" Relationship="NavetteMANAGER_DBModel.FK__Abo_Clien__Id_Cl__70DDC3D8" FromRole="USER_APP" ToRole="Abo_Client" />
+  </EntityType>
+  <EntityType Name="Ville">
+    <Key>
+      <PropertyRef Name="ID_Ville" />
+    </Key>
+    <Property Name="ID_Ville" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom_Ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Abonnement" Relationship="Self.FK__Abonnemen__Ville__46E78A0C" FromRole="Ville" ToRole="Abonnement" />
+    <NavigationProperty Name="Abonnement1" Relationship="Self.FK__Abonnemen__Ville__47DBAE45" FromRole="Ville" ToRole="Abonnement" />
+    <NavigationProperty Name="Demande" Relationship="Self.FK__Demande__Ville_A__3D5E1FD2" FromRole="Ville" ToRole="Demande" />
+    <NavigationProperty Name="Demande1" Relationship="Self.FK__Demande__Ville_D__3C69FB99" FromRole="Ville" ToRole="Demande" />
+  </EntityType>
+  <Association Name="FK__Abonnemen__ID_Au__45F365D3">
+    <End Role="Autocar" Type="Self.Autocar" Multiplicity="0..1" />
+    <End Role="Abonnement" Type="Self.Abonnement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Autocar">
+        <PropertyRef Name="ID_Autocar" />
+      </Principal>
+      <Dependent Role="Abonnement">
+        <PropertyRef Name="ID_Autocar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Abonnemen__ID_So__44FF419A">
+    <End Role="Societe" Type="Self.Societe" Multiplicity="0..1" />
+    <End Role="Abonnement" Type="Self.Abonnement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Societe">
+        <PropertyRef Name="ID_Societe" />
+      </Principal>
+      <Dependent Role="Abonnement">
+        <PropertyRef Name="ID_Societe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Abonnemen__Ville__46E78A0C">
+    <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
+    <End Role="Abonnement" Type="Self.Abonnement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ville">
+        <PropertyRef Name="ID_Ville" />
+      </Principal>
+      <Dependent Role="Abonnement">
+        <PropertyRef Name="Ville_Depart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Abonnemen__Ville__47DBAE45">
+    <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
+    <End Role="Abonnement" Type="Self.Abonnement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ville">
+        <PropertyRef Name="ID_Ville" />
+      </Principal>
+      <Dependent Role="Abonnement">
+        <PropertyRef Name="Ville_Arrive" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Demande__Ville_A__3D5E1FD2">
+    <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
+    <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ville">
+        <PropertyRef Name="ID_Ville" />
+      </Principal>
+      <Dependent Role="Demande">
+        <PropertyRef Name="Ville_Arrive" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Demande__Ville_D__3C69FB99">
+    <End Role="Ville" Type="Self.Ville" Multiplicity="0..1" />
+    <End Role="Demande" Type="Self.Demande" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ville">
+        <PropertyRef Name="ID_Ville" />
+      </Principal>
+      <Dependent Role="Demande">
+        <PropertyRef Name="Ville_Depart" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Abonnement_Client">
+    <End Role="Abonnement" Type="Self.Abonnement" Multiplicity="*" />
+    <End Role="USER_APP" Type="Self.USER_APP" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="NavetteMANAGER_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Abonnement" EntityType="Self.Abonnement" />
+    <EntitySet Name="Autocar" EntityType="Self.Autocar" />
+    <EntitySet Name="Demande" EntityType="Self.Demande" />
+    <EntitySet Name="Societe" EntityType="Self.Societe" />
+    <EntitySet Name="USER_APP" EntityType="Self.USER_APP" />
+    <EntitySet Name="Ville" EntityType="Self.Ville" />
+    <AssociationSet Name="FK__Abonnemen__ID_Au__45F365D3" Association="Self.FK__Abonnemen__ID_Au__45F365D3">
+      <End Role="Autocar" EntitySet="Autocar" />
+      <End Role="Abonnement" EntitySet="Abonnement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Abonnemen__ID_So__44FF419A" Association="Self.FK__Abonnemen__ID_So__44FF419A">
+      <End Role="Societe" EntitySet="Societe" />
+      <End Role="Abonnement" EntitySet="Abonnement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Abonnemen__Ville__46E78A0C" Association="Self.FK__Abonnemen__Ville__46E78A0C">
+      <End Role="Ville" EntitySet="Ville" />
+      <End Role="Abonnement" EntitySet="Abonnement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Abonnemen__Ville__47DBAE45" Association="Self.FK__Abonnemen__Ville__47DBAE45">
+      <End Role="Ville" EntitySet="Ville" />
+      <End Role="Abonnement" EntitySet="Abonnement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Demande__Ville_A__3D5E1FD2" Association="Self.FK__Demande__Ville_A__3D5E1FD2">
+      <End Role="Ville" EntitySet="Ville" />
+      <End Role="Demande" EntitySet="Demande" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Demande__Ville_D__3C69FB99" Association="Self.FK__Demande__Ville_D__3C69FB99">
+      <End Role="Ville" EntitySet="Ville" />
+      <End Role="Demande" EntitySet="Demande" />
+    </AssociationSet>
+    <AssociationSet Name="Abonnement_Client" Association="Self.Abonnement_Client">
+      <End Role="Abonnement" EntitySet="Abonnement" />
+      <End Role="USER_APP" EntitySet="USER_APP" />
+    </AssociationSet>
+    <EntitySet Name="suggestion" EntityType="NavetteMANAGER_DBModel.suggestion" />
+    <EntitySet Name="Abo_Client" EntityType="NavetteMANAGER_DBModel.Abo_Client" />
+    <AssociationSet Name="FK__Abo_Clien__Id_Ab__6FE99F9F" Association="NavetteMANAGER_DBModel.FK__Abo_Clien__Id_Ab__6FE99F9F">
+      <End Role="Abonnement" EntitySet="Abonnement" />
+      <End Role="Abo_Client" EntitySet="Abo_Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Abo_Clien__Id_Cl__70DDC3D8" Association="NavetteMANAGER_DBModel.FK__Abo_Clien__Id_Cl__70DDC3D8">
+      <End Role="USER_APP" EntitySet="USER_APP" />
+      <End Role="Abo_Client" EntitySet="Abo_Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Autocar__ID_Soci__01142BA1" Association="NavetteMANAGER_DBModel.FK__Autocar__ID_Soci__01142BA1">
+      <End Role="Societe" EntitySet="Societe" />
+      <End Role="Autocar" EntitySet="Autocar" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="suggestion">
+    <Key>
+      <PropertyRef Name="Id_Suggestion" />
+    </Key>
+    <Property Name="Id_Suggestion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ville_Depart" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Ville_Arrive" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Heure_depart" Type="Time" Precision="7" />
+  </EntityType>
+  <EntityType Name="Abo_Client">
+    <Key>
+      <PropertyRef Name="Id_Abo_Clienta" />
+    </Key>
+    <Property Name="Id_Abo_Clienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Abo" Type="Int32" />
+    <Property Name="Id_Client" Type="Int32" />
+    <NavigationProperty Name="Abonnement" Relationship="NavetteMANAGER_DBModel.FK__Abo_Clien__Id_Ab__6FE99F9F" FromRole="Abo_Client" ToRole="Abonnement" />
+    <NavigationProperty Name="USER_APP" Relationship="NavetteMANAGER_DBModel.FK__Abo_Clien__Id_Cl__70DDC3D8" FromRole="Abo_Client" ToRole="USER_APP" />
+  </EntityType>
+  <Association Name="FK__Abo_Clien__Id_Ab__6FE99F9F">
+    <End Type="NavetteMANAGER_DBModel.Abonnement" Role="Abonnement" Multiplicity="0..1" />
+    <End Type="NavetteMANAGER_DBModel.Abo_Client" Role="Abo_Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Abonnement">
+        <PropertyRef Name="ID_Abonnement" />
+      </Principal>
+      <Dependent Role="Abo_Client">
+        <PropertyRef Name="Id_Abo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Abo_Clien__Id_Cl__70DDC3D8">
+    <End Type="NavetteMANAGER_DBModel.USER_APP" Role="USER_APP" Multiplicity="0..1" />
+    <End Type="NavetteMANAGER_DBModel.Abo_Client" Role="Abo_Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USER_APP">
+        <PropertyRef Name="ID_USER" />
+      </Principal>
+      <Dependent Role="Abo_Client">
+        <PropertyRef Name="Id_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Autocar__ID_Soci__01142BA1">
+    <End Type="NavetteMANAGER_DBModel.Societe" Role="Societe" Multiplicity="0..1" />
+    <End Type="NavetteMANAGER_DBModel.Autocar" Role="Autocar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Societe">
+        <PropertyRef Name="ID_Societe" />
+      </Principal>
+      <Dependent Role="Autocar">
+        <PropertyRef Name="ID_Societe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

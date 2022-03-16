@@ -1,0 +1,46 @@
+﻿@model navette.Models.Autocar
+@{
+    ViewBag.Title = "Acceuil";
+    Layout = "~/Views/Shared/LayoutForm.cshtml";
+}
+<section class="mt-7 py-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 py-5 py-xl-5 py-xxl-7">
+                <br /><br /><br /><br /><br />
+                <h1 class="display-3 text-primary fw-bold">Please Enter information about your subscription</h1>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        @using (Html.BeginForm("AjouerAutocar", "GestionNavette", FormMethod.Post, new { @class = "row g-4 mt-5" }))
+                        {
+
+
+
+
+                            <div class="col-sm-6 col-md-6 col-xl-5">
+                                <div class="input-group-icon">
+                                    <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+                                    @Html.TextBoxFor(A => A.Descritpion_Autocar, new { placeholder = "Description", @class = "form-control input-box form-voyage-control" })
+                                    <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-bus"> </i></span>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6 col-md-6 col-xl-5">
+                                <div class="input-group-icon">
+                                    @Html.TextBoxFor(A=> A.Capacity, new { placeholder = "Capacity", @class = "form-control input-box form-voyage-control"})
+
+                                    <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+                                <button class="btn btn-secondary" type="submit">Search</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

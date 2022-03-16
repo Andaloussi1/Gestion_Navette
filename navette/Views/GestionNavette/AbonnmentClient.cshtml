@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "AbonnmentClient";
+    Layout = "~/Views/Shared/LayoutForm.cshtml";
+}
+
+<section class="mt-2 py-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 py-7 py-xl-7 py-xxl-9">
+                <br /><br /><br /><br /><br />
+                <h1 class="display-3 text-primary fw-bold">Details of the selected subscription</h1>
+                <br />
+                <br />
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        Departure
+                                    </th>
+
+                                    <th scope="col">
+                                        Arrivale
+                                    </th>
+
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach(var a in ViewBag.Abo_of_cli)
+            {
+
+            
+                                <tr>
+                                    <td>
+                                        @a.Abonnement.Ville.Nom_Ville
+                                    </td>
+                                    <td>
+                                        @a.Abonnement.Ville1.Nom_Ville
+                                    </td>
+
+                                  
+
+                                </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

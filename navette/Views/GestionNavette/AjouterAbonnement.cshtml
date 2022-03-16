@@ -1,0 +1,213 @@
+﻿@model navette.Models.AboBus
+@{
+    ViewBag.Title = "AjouterAbonnement";
+    Layout = "~/Views/Shared/LayoutSociete.cshtml";
+}
+
+
+@if (TempData["AutocarSuccess"] != null)
+{
+    <div class="container">
+
+        <div class="alert alert-success alert-dismissible" id="myAlert">
+            <a href="#" class="close">&times;</a>
+            <strong>Success!</strong> @TempData["AutocarSuccess"]
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".close").click(function () {
+                $("#myAlert").alert("close");
+            });
+        });
+    </script>
+}
+
+@if (TempData["AutocarError"] != null)
+{
+    <div class="container">
+
+        <div class="alert alert-danger alert-dismissible" id="myAlert">
+            <a href="#" class="close">&times;</a>
+            <strong>Success!</strong> @TempData["AutocarError"]
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $(".close").click(function () {
+                $("#myAlert").alert("close");
+            });
+        });
+    </script>
+}
+
+
+
+
+
+@using (Html.BeginForm("AjouterAbonnement2", "GestionNavette", FormMethod.Post, new { @class = "row g-4 mt-5" }))
+{
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            @Html.DropDownListFor(A => A.Abonnement.Ville_Depart, (IEnumerable<SelectListItem>)ViewBag.villes, "Departure", new { @class = "form-select form-voyage-select input-box" })
+
+            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"> </i></span>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            @Html.DropDownListFor(A => A.Abonnement.Ville_Arrive, (IEnumerable<SelectListItem>)ViewBag.villes, "Arrival", new { @class = "form-select form-voyage-select input-box" })
+            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-map-marker-alt"></i></span>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            @Html.DropDownListFor(A => A.Abonnement.ID_Autocar, (IEnumerable<SelectListItem>)ViewBag.Autocars, "Bus", new { @class = "form-select form-voyage-select input-box" })
+
+            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-bus"> </i></span>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+            @*<a href="" class="btn btn-outline-dark">Add new bus</a>*@
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Add new Bus</button>
+
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+
+            @Html.TextBoxFor(A => A.Abonnement.Date_Debut, new { placeholder = "Starts on", @class = "form-control input-box form-voyage-control", onfocus = "(this.type='date')" })
+
+            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"> </i></span>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+
+            @Html.TextBoxFor(A => A.Abonnement.Date_Fin, new { placeholder = "Ends on", @class = "form-control input-box form-voyage-control", onfocus = "(this.type='date')" })
+
+            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"> </i></span>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+
+            @Html.TextBoxFor(A => A.Abonnement.Heure_Depart, new { placeholder = "Departure hour", @class = "form-control input-box form-voyage-control", onfocus = "(this.type='time')" })
+
+            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-clock"> </i></span>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+
+            @Html.TextBoxFor(A => A.Abonnement.Heure_Arrive, new { placeholder = "Arrival hour", @class = "form-control input-box form-voyage-control", onfocus = "(this.type='time')" })
+
+            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-clock"> </i></span>
+        </div>
+    </div>
+
+
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+
+            @Html.TextBoxFor(A => A.Abonnement.Nombre_Passager, new { placeholder = "Capacity", @class = "form-control input-box form-voyage-control", onfocus = "(this.type='number',min='5')" })
+
+            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-users"> </i></span>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xl-5">
+        <div class="input-group-icon">
+            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+
+            @Html.TextBoxFor(A => A.Abonnement.Prix, new { placeholder = "Price", @class = "form-control input-box form-voyage-control" })
+
+            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-coins"> </i></span>
+        </div>
+    </div>
+    @*
+
+        <div class="col-sm-6 col-md-6 col-xl-5">
+            <div class="input-group-icon">
+
+                @Html.TextBoxFor(A =>A.ID_Autocar, new { placeholder = "Starts on", @class = "form-control input-box form-voyage-control", })
+                <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-calendar"></i></span>
+            </div>
+        </div>*@
+
+    <div class="col-12 col-xl-10 col-lg-12 d-grid mt-6">
+        <button class="btn btn-secondary" type="submit">Submit</button>
+    </div>
+}
+
+@using (Html.BeginForm("AjouterAutocar", "GestionNavette", FormMethod.Post, new { @class = "row g-4 mt-5" }))
+{
+
+    <!-- Modal -->
+   
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Addition of a new Bus !</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-sm-6 col-md-9 col-xl-7">
+                        <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+
+                            @Html.TextBoxFor(A => A.Autocar.Matricule, new { placeholder = "Registration number", @class = "form-control input-box form-voyage-control" })
+
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-address-card"> </i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-9 col-xl-7">
+                        <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+
+                            @Html.TextBoxFor(A => A.Autocar.Capacity, new { placeholder = "Capacity", @class = "form-control input-box form-voyage-control" })
+
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-users"> </i></span>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-9 col-xl-7">
+                        <div class="input-group-icon">
+                            <label class="form-label visually-hidden" for="inputPersonOne">Person</label>
+
+                            @Html.TextBoxFor(A => A.Autocar.Descritpion_Autocar, new { placeholder = "Description", @class = "form-control input-box form-voyage-control" })
+
+                            <span class="nav-link-icon text-800 fs--1 input-box-icon"><i class="fas fa-clipboard-list"> </i></span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
